@@ -59,6 +59,7 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 14px 22px; border-radius: 999px; text-decoration: none;
 }
 .pill.solid { background: var(--signal); color: var(--navy); }
+a.pill.solid:hover { background: var(--ice); color: var(--navy); }
 .pill.ghost { border: 1.5px solid var(--line); color: var(--mute); }
 .hero-shot { justify-self: center; position: relative; }
 .hero-shot .phone { width: min(300px, 70vw); }
