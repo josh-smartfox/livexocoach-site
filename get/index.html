@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get LiveXO Coach</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0D1B2A">
+<link rel="icon" href="../img/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../style.css">
+<script>
+// Sends phones straight to their store, tagged with where the link was
+// posted (?ref=tiktok etc.) so Play Console and App Store Connect show
+// installs by source. Nothing is stored or sent anywhere else.
+(function () {
+  // App Store Connect → Analytics → Sources → Campaigns shows the provider
+  // ID. Without it the App Store link still works, just untagged.
+  var APPLE_PROVIDER_ID = '129684420';
+  var m = /[?&]ref=([a-z0-9_-]{1,40})/i.exec(location.search);
+  var ref = m ? m[1].toLowerCase() : 'site';
+  var play = 'https://play.google.com/store/apps/details?id=com.livexocoach.app' +
+    '&referrer=' + encodeURIComponent('utm_source=' + ref + '&utm_medium=link');
+  var apple = APPLE_PROVIDER_ID
+    ? 'https://apps.apple.com/app/apple-store/id6827227109?pt=' +
+      APPLE_PROVIDER_ID + '&ct=' + ref + '&mt=8'
+    : 'https://apps.apple.com/app/id6827227109';
+  var ua = navigator.userAgent;
+  var ios = /iPhone|iPad|iPod/.test(ua) ||
+    (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  if (ios) location.replace(apple);
+  else if (/Android/.test(ua)) location.replace(play);
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('play').href = play;
+    document.getElementById('apple').href = apple;
+  });
+})();
+</script>
+</head>
+<body>
+<main class="wrap doc">
+  <h1>Get LiveXO Coach</h1>
+  <p>Flag football plays vs a defense that reacts. Free on iPhone and Android.</p>
+  <p>
+    <a class="pill solid" id="play" href="https://play.google.com/store/apps/details?id=com.livexocoach.app">Get it on Google Play</a>
+    <a class="pill solid" id="apple" href="https://apps.apple.com/app/id6827227109">Download on the App Store</a>
+  </p>
+  <p><a href="../">More about the app</a></p>
+</main>
+</body>
+</html>
